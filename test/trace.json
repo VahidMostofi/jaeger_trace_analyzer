@@ -1,0 +1,377 @@
+{
+    "data": [
+        {
+            "traceID": "c6d0c24b69ec5fef",
+            "spans": [
+                {
+                    "traceID": "c6d0c24b69ec5fef",
+                    "spanID": "d87acc251199b4e5",
+                    "flags": 1,
+                    "operationName": "post: http://auth:3007/auth/login",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "c6d0c24b69ec5fef",
+                            "spanID": "c6d0c24b69ec5fef"
+                        }
+                    ],
+                    "startTime": 1586313182398000,
+                    "duration": 90000,
+                    "tags": [
+                        {
+                            "key": "http.method",
+                            "type": "string",
+                            "value": "post"
+                        },
+                        {
+                            "key": "http.url",
+                            "type": "string",
+                            "value": "/auth/login"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "http.status_code",
+                            "type": "float64",
+                            "value": 200
+                        },
+                        {
+                            "key": "internal.span.format",
+                            "type": "string",
+                            "value": "jaeger"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": null
+                },
+                {
+                    "traceID": "c6d0c24b69ec5fef",
+                    "spanID": "0fc566e7364bbefa",
+                    "flags": 1,
+                    "operationName": "generateAuthToken",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "c6d0c24b69ec5fef",
+                            "spanID": "898ea73f642754af"
+                        }
+                    ],
+                    "startTime": 1586313182481000,
+                    "duration": 4000,
+                    "tags": [
+                        {
+                            "key": "internal.span.format",
+                            "type": "string",
+                            "value": "jaeger"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p2",
+                    "warnings": null
+                },
+                {
+                    "traceID": "c6d0c24b69ec5fef",
+                    "spanID": "b9078f1afdf644b5",
+                    "flags": 1,
+                    "operationName": "queryDB",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "c6d0c24b69ec5fef",
+                            "spanID": "898ea73f642754af"
+                        }
+                    ],
+                    "startTime": 1586313182438000,
+                    "duration": 42000,
+                    "tags": [
+                        {
+                            "key": "internal.span.format",
+                            "type": "string",
+                            "value": "jaeger"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p2",
+                    "warnings": null
+                },
+                {
+                    "traceID": "c6d0c24b69ec5fef",
+                    "spanID": "c6d0c24b69ec5fef",
+                    "flags": 1,
+                    "operationName": "auth_login",
+                    "references": [],
+                    "startTime": 1586313182396000,
+                    "duration": 97000,
+                    "tags": [
+                        {
+                            "key": "sampler.type",
+                            "type": "string",
+                            "value": "const"
+                        },
+                        {
+                            "key": "sampler.param",
+                            "type": "bool",
+                            "value": true
+                        },
+                        {
+                            "key": "http.request.url",
+                            "type": "string",
+                            "value": "/auth/login"
+                        },
+                        {
+                            "key": "http.request.method",
+                            "type": "string",
+                            "value": "POST"
+                        },
+                        {
+                            "key": "http.request.path",
+                            "type": "string",
+                            "value": "/auth/login"
+                        },
+                        {
+                            "key": "http.response.status_code",
+                            "type": "float64",
+                            "value": 200
+                        },
+                        {
+                            "key": "http.response.status_message",
+                            "type": "string",
+                            "value": "OK"
+                        },
+                        {
+                            "key": "internal.span.format",
+                            "type": "string",
+                            "value": "jaeger"
+                        }
+                    ],
+                    "logs": [
+                        {
+                            "timestamp": 1586313182397000,
+                            "fields": [
+                                {
+                                    "key": "body",
+                                    "type": "string",
+                                    "value": "{\"email\":\"3d@gmail.com\",\"password\":\"123456789\"}"
+                                }
+                            ]
+                        },
+                        {
+                            "timestamp": 1586313182397000,
+                            "fields": [
+                                {
+                                    "key": "query",
+                                    "type": "string",
+                                    "value": "{}"
+                                }
+                            ]
+                        },
+                        {
+                            "timestamp": 1586313182397000,
+                            "fields": [
+                                {
+                                    "key": "params",
+                                    "type": "string",
+                                    "value": "{}"
+                                }
+                            ]
+                        }
+                    ],
+                    "processID": "p3",
+                    "warnings": null
+                },
+                {
+                    "traceID": "c6d0c24b69ec5fef",
+                    "spanID": "898ea73f642754af",
+                    "flags": 1,
+                    "operationName": "login",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "c6d0c24b69ec5fef",
+                            "spanID": "d87acc251199b4e5"
+                        }
+                    ],
+                    "startTime": 1586313182437000,
+                    "duration": 51000,
+                    "tags": [
+                        {
+                            "key": "http.request.url",
+                            "type": "string",
+                            "value": "/auth/login"
+                        },
+                        {
+                            "key": "http.request.method",
+                            "type": "string",
+                            "value": "POST"
+                        },
+                        {
+                            "key": "http.request.path",
+                            "type": "string",
+                            "value": "/auth/login"
+                        },
+                        {
+                            "key": "http.response.status_code",
+                            "type": "float64",
+                            "value": 200
+                        },
+                        {
+                            "key": "http.response.status_message",
+                            "type": "string",
+                            "value": "OK"
+                        },
+                        {
+                            "key": "internal.span.format",
+                            "type": "string",
+                            "value": "jaeger"
+                        }
+                    ],
+                    "logs": [
+                        {
+                            "timestamp": 1586313182438000,
+                            "fields": [
+                                {
+                                    "key": "body",
+                                    "type": "string",
+                                    "value": "{\"email\":\"3d@gmail.com\",\"password\":\"123456789\"}"
+                                }
+                            ]
+                        },
+                        {
+                            "timestamp": 1586313182438000,
+                            "fields": [
+                                {
+                                    "key": "query",
+                                    "type": "string",
+                                    "value": "{}"
+                                }
+                            ]
+                        },
+                        {
+                            "timestamp": 1586313182438000,
+                            "fields": [
+                                {
+                                    "key": "params",
+                                    "type": "string",
+                                    "value": "{}"
+                                }
+                            ]
+                        }
+                    ],
+                    "processID": "p4",
+                    "warnings": null
+                }
+            ],
+            "processes": {
+                "p1": {
+                    "serviceName": "gateway",
+                    "tags": [
+                        {
+                            "key": "client-uuid",
+                            "type": "string",
+                            "value": "73d90803-78ab-4563-abb2-888691cc1abc"
+                        },
+                        {
+                            "key": "hostname",
+                            "type": "string",
+                            "value": "2c61da05bb0e"
+                        },
+                        {
+                            "key": "ip",
+                            "type": "string",
+                            "value": "172.21.0.6"
+                        },
+                        {
+                            "key": "jaeger.version",
+                            "type": "string",
+                            "value": "Node-3.17.2"
+                        }
+                    ]
+                },
+                "p2": {
+                    "serviceName": "auth",
+                    "tags": [
+                        {
+                            "key": "client-uuid",
+                            "type": "string",
+                            "value": "b9012130-1513-4e4c-88bf-be33caf2c687"
+                        },
+                        {
+                            "key": "hostname",
+                            "type": "string",
+                            "value": "48f28521bc9c"
+                        },
+                        {
+                            "key": "ip",
+                            "type": "string",
+                            "value": "172.21.0.4"
+                        },
+                        {
+                            "key": "jaeger.version",
+                            "type": "string",
+                            "value": "Node-3.17.2"
+                        }
+                    ]
+                },
+                "p3": {
+                    "serviceName": "gateway",
+                    "tags": [
+                        {
+                            "key": "client-uuid",
+                            "type": "string",
+                            "value": "8dadfdfc-29fd-4548-89a6-18faba94f11e"
+                        },
+                        {
+                            "key": "hostname",
+                            "type": "string",
+                            "value": "2c61da05bb0e"
+                        },
+                        {
+                            "key": "ip",
+                            "type": "string",
+                            "value": "172.21.0.6"
+                        },
+                        {
+                            "key": "jaeger.version",
+                            "type": "string",
+                            "value": "Node-3.15.0"
+                        }
+                    ]
+                },
+                "p4": {
+                    "serviceName": "auth",
+                    "tags": [
+                        {
+                            "key": "client-uuid",
+                            "type": "string",
+                            "value": "d0aff469-9798-4e2b-8978-766c47c9f704"
+                        },
+                        {
+                            "key": "hostname",
+                            "type": "string",
+                            "value": "48f28521bc9c"
+                        },
+                        {
+                            "key": "ip",
+                            "type": "string",
+                            "value": "172.21.0.4"
+                        },
+                        {
+                            "key": "jaeger.version",
+                            "type": "string",
+                            "value": "Node-3.15.0"
+                        }
+                    ]
+                }
+            },
+            "warnings": null
+        }
+    ],
+    "total": 0,
+    "limit": 0,
+    "offset": 0,
+    "errors": null
+}

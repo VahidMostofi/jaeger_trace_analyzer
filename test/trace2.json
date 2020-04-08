@@ -1,0 +1,381 @@
+{
+    "data": [
+        {
+            "traceID": "6f7a089f8c2a19e2",
+            "spans": [
+                {
+                    "traceID": "6f7a089f8c2a19e2",
+                    "spanID": "a8403f0168699cd8",
+                    "flags": 1,
+                    "operationName": "DB",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "6f7a089f8c2a19e2",
+                            "spanID": "3ca1392a9df7ee0e"
+                        }
+                    ],
+                    "startTime": 1586313470896500,
+                    "duration": 12000,
+                    "tags": [
+                        {
+                            "key": "internal.span.format",
+                            "type": "string",
+                            "value": "jaeger"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p1",
+                    "warnings": [
+                        "This span's timestamps were adjusted by -8.5ms"
+                    ]
+                },
+                {
+                    "traceID": "6f7a089f8c2a19e2",
+                    "spanID": "8a1e28e1907a478b",
+                    "flags": 1,
+                    "operationName": "get: http://books:3009/books/5e8d389240df3300266ec986",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "6f7a089f8c2a19e2",
+                            "spanID": "6f7a089f8c2a19e2"
+                        }
+                    ],
+                    "startTime": 1586313470887000,
+                    "duration": 34000,
+                    "tags": [
+                        {
+                            "key": "http.method",
+                            "type": "string",
+                            "value": "get"
+                        },
+                        {
+                            "key": "http.url",
+                            "type": "string",
+                            "value": "/books/5e8d389240df3300266ec986"
+                        },
+                        {
+                            "key": "span.kind",
+                            "type": "string",
+                            "value": "client"
+                        },
+                        {
+                            "key": "http.status_code",
+                            "type": "float64",
+                            "value": 200
+                        },
+                        {
+                            "key": "internal.span.format",
+                            "type": "string",
+                            "value": "jaeger"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p2",
+                    "warnings": null
+                },
+                {
+                    "traceID": "6f7a089f8c2a19e2",
+                    "spanID": "69622cd2f7f6c24e",
+                    "flags": 1,
+                    "operationName": "authenticate",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "6f7a089f8c2a19e2",
+                            "spanID": "6f7a089f8c2a19e2"
+                        }
+                    ],
+                    "startTime": 1586313470886000,
+                    "duration": 0,
+                    "tags": [
+                        {
+                            "key": "internal.span.format",
+                            "type": "string",
+                            "value": "jaeger"
+                        }
+                    ],
+                    "logs": [],
+                    "processID": "p2",
+                    "warnings": null
+                },
+                {
+                    "traceID": "6f7a089f8c2a19e2",
+                    "spanID": "6f7a089f8c2a19e2",
+                    "flags": 1,
+                    "operationName": "get_book",
+                    "references": [],
+                    "startTime": 1586313470885000,
+                    "duration": 37000,
+                    "tags": [
+                        {
+                            "key": "sampler.type",
+                            "type": "string",
+                            "value": "const"
+                        },
+                        {
+                            "key": "sampler.param",
+                            "type": "bool",
+                            "value": true
+                        },
+                        {
+                            "key": "http.request.url",
+                            "type": "string",
+                            "value": "/books/5e8d389240df3300266ec986"
+                        },
+                        {
+                            "key": "http.request.method",
+                            "type": "string",
+                            "value": "GET"
+                        },
+                        {
+                            "key": "http.request.path",
+                            "type": "string",
+                            "value": "/books/5e8d389240df3300266ec986"
+                        },
+                        {
+                            "key": "http.response.status_code",
+                            "type": "float64",
+                            "value": 200
+                        },
+                        {
+                            "key": "http.response.status_message",
+                            "type": "string",
+                            "value": "OK"
+                        },
+                        {
+                            "key": "internal.span.format",
+                            "type": "string",
+                            "value": "jaeger"
+                        }
+                    ],
+                    "logs": [
+                        {
+                            "timestamp": 1586313470885000,
+                            "fields": [
+                                {
+                                    "key": "body",
+                                    "type": "string",
+                                    "value": "{}"
+                                }
+                            ]
+                        },
+                        {
+                            "timestamp": 1586313470885000,
+                            "fields": [
+                                {
+                                    "key": "query",
+                                    "type": "string",
+                                    "value": "{}"
+                                }
+                            ]
+                        },
+                        {
+                            "timestamp": 1586313470885000,
+                            "fields": [
+                                {
+                                    "key": "params",
+                                    "type": "string",
+                                    "value": "{\"0\":\"5e8d389240df3300266ec986\"}"
+                                }
+                            ]
+                        }
+                    ],
+                    "processID": "p3",
+                    "warnings": null
+                },
+                {
+                    "traceID": "6f7a089f8c2a19e2",
+                    "spanID": "3ca1392a9df7ee0e",
+                    "flags": 1,
+                    "operationName": "getone",
+                    "references": [
+                        {
+                            "refType": "CHILD_OF",
+                            "traceID": "6f7a089f8c2a19e2",
+                            "spanID": "8a1e28e1907a478b"
+                        }
+                    ],
+                    "startTime": 1586313470894500,
+                    "duration": 19000,
+                    "tags": [
+                        {
+                            "key": "http.request.url",
+                            "type": "string",
+                            "value": "/5e8d389240df3300266ec986"
+                        },
+                        {
+                            "key": "http.request.method",
+                            "type": "string",
+                            "value": "GET"
+                        },
+                        {
+                            "key": "http.request.path",
+                            "type": "string",
+                            "value": "/5e8d389240df3300266ec986"
+                        },
+                        {
+                            "key": "http.response.status_code",
+                            "type": "float64",
+                            "value": 200
+                        },
+                        {
+                            "key": "http.response.status_message",
+                            "type": "string",
+                            "value": "OK"
+                        },
+                        {
+                            "key": "internal.span.format",
+                            "type": "string",
+                            "value": "jaeger"
+                        }
+                    ],
+                    "logs": [
+                        {
+                            "timestamp": 1586313470895500,
+                            "fields": [
+                                {
+                                    "key": "body",
+                                    "type": "string",
+                                    "value": "{}"
+                                }
+                            ]
+                        },
+                        {
+                            "timestamp": 1586313470896500,
+                            "fields": [
+                                {
+                                    "key": "query",
+                                    "type": "string",
+                                    "value": "{}"
+                                }
+                            ]
+                        },
+                        {
+                            "timestamp": 1586313470896500,
+                            "fields": [
+                                {
+                                    "key": "params",
+                                    "type": "string",
+                                    "value": "{\"id\":\"5e8d389240df3300266ec986\"}"
+                                }
+                            ]
+                        }
+                    ],
+                    "processID": "p4",
+                    "warnings": [
+                        "This span's timestamps were adjusted by -8.5ms"
+                    ]
+                }
+            ],
+            "processes": {
+                "p1": {
+                    "serviceName": "book",
+                    "tags": [
+                        {
+                            "key": "client-uuid",
+                            "type": "string",
+                            "value": "a49d9179-bcba-42c5-abec-4a08ad5e78bf"
+                        },
+                        {
+                            "key": "hostname",
+                            "type": "string",
+                            "value": "cfa86dba6c10"
+                        },
+                        {
+                            "key": "ip",
+                            "type": "string",
+                            "value": "172.21.0.5"
+                        },
+                        {
+                            "key": "jaeger.version",
+                            "type": "string",
+                            "value": "Node-3.17.2"
+                        }
+                    ]
+                },
+                "p2": {
+                    "serviceName": "gateway",
+                    "tags": [
+                        {
+                            "key": "client-uuid",
+                            "type": "string",
+                            "value": "73d90803-78ab-4563-abb2-888691cc1abc"
+                        },
+                        {
+                            "key": "hostname",
+                            "type": "string",
+                            "value": "2c61da05bb0e"
+                        },
+                        {
+                            "key": "ip",
+                            "type": "string",
+                            "value": "172.21.0.6"
+                        },
+                        {
+                            "key": "jaeger.version",
+                            "type": "string",
+                            "value": "Node-3.17.2"
+                        }
+                    ]
+                },
+                "p3": {
+                    "serviceName": "gateway",
+                    "tags": [
+                        {
+                            "key": "client-uuid",
+                            "type": "string",
+                            "value": "d4884961-bfe5-4938-ab8f-6af0fd71fe40"
+                        },
+                        {
+                            "key": "hostname",
+                            "type": "string",
+                            "value": "2c61da05bb0e"
+                        },
+                        {
+                            "key": "ip",
+                            "type": "string",
+                            "value": "172.21.0.6"
+                        },
+                        {
+                            "key": "jaeger.version",
+                            "type": "string",
+                            "value": "Node-3.15.0"
+                        }
+                    ]
+                },
+                "p4": {
+                    "serviceName": "book",
+                    "tags": [
+                        {
+                            "key": "client-uuid",
+                            "type": "string",
+                            "value": "eed3392c-bfd4-4ed1-9266-fbd1845edefd"
+                        },
+                        {
+                            "key": "hostname",
+                            "type": "string",
+                            "value": "cfa86dba6c10"
+                        },
+                        {
+                            "key": "ip",
+                            "type": "string",
+                            "value": "172.21.0.5"
+                        },
+                        {
+                            "key": "jaeger.version",
+                            "type": "string",
+                            "value": "Node-3.15.0"
+                        }
+                    ]
+                }
+            },
+            "warnings": null
+        }
+    ],
+    "total": 0,
+    "limit": 0,
+    "offset": 0,
+    "errors": null
+}
