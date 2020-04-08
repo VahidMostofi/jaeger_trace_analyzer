@@ -1,0 +1,2 @@
+sudo docker build . -t trace_aggreagtor:latest
+sudo docker run --rm -p 8657:8657 --network host --name trace_aggreagtor -d trace_aggreagtor:latest

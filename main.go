@@ -62,7 +62,7 @@ func (c *Controller) Handler(w http.ResponseWriter, r *http.Request) {
 			w.Header().Set("Content-Type", "application/json")
 			w.Write(b)
 			c.Aggregator = nil
-			fmt.println("done")
+			fmt.Println("done")
 		}else{
 			w.WriteHeader(400)
 		}		
