@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"strings"
 )
 
 type Span struct {
@@ -30,17 +29,6 @@ func (s *SimpleTraceParser) ParseTrace(data []byte) (map[string]Span, error) {
 			Duration:  v2["duration"].(float64),
 		}
 		operationName := v2["operationName"].(string)
-		if strings.HasPrefix(operationName, "post: http://auth:3007/auth/login") {
-			operationName = "auth_service_login"
-		} else if strings.HasPrefix(operationName, "get: http://books:3009/books/") {
-			if len(operationName) == len("get: http://books:3009/books/") {
-				operationName = "book_service_list"
-			} else if len(operationName) > len("get: http://books:3009/books/") {
-				operationName = "book_service_getone"
-			}
-		} else if strings.HasPrefix(operationName, "put: http://books:3009/books/") {
-			operationName = "book_service_edit"
-		}
 		spans[operationName] = s
 	}
 	return spans, nil
@@ -56,51 +44,63 @@ type SimpleBookstoreTraceParser struct{}
 
 func (b *SimpleBookstoreTraceParser) ParseLoginTrace(spans map[string]Span) (map[string]interface{}, error) {
 	total := spans["auth_login"].Duration
-	gateway2auth := spans["login"].StartTime - spans["auth_service_login"].StartTime
+	// gateway2auth := spans["login"].StartTime - spans["auth_service_login"].StartTime
+	getService := spans["auth_req_login"].Duration
+	connectToService := spans["auth_connect"].Duration
 	inAuth := spans["login"].Duration
 	inAuthDB := spans["queryDB"].Duration
 	inAuthGenJWT := spans["generateAuthToken"].Duration
-	auth2gateway := spans["auth_login"].Duration - spans["auth_service_login"].Duration - (spans["auth_service_login"].StartTime - spans["auth_login"].StartTime)
+	waitTime := spans["login"].StartTime - (spans["auth_connect"].StartTime + spans["auth_connect"].Duration)
+	// auth2gateway := spans["auth_login"].Duration - spans["auth_service_login"].Duration - (spans["auth_service_login"].StartTime - spans["auth_login"].StartTime)
 	info := make(map[string]interface{})
 	info["total"] = total
-	info["gateway2auth"] = gateway2auth
+	info["getService"] = getService
 	info["inAuth"] = inAuth
 	info["inAuthDB"] = inAuthDB
 	info["inAuthGenJWT"] = inAuthGenJWT
-	info["auth2gateway"] = auth2gateway
+	info["connectToService"] = connectToService
+	info["waitTime"] = waitTime
 	return info, nil
 }
 
 func (b *SimpleBookstoreTraceParser) ParseGetBookTrace(spans map[string]Span) (map[string]interface{}, error) {
 	total := spans["get_book"].Duration
 	authenticate := spans["authenticate"].Duration
-	gateway2books := spans["getone"].StartTime - spans["book_service_getone"].StartTime
+	getService := spans["books_get_book"].Duration
+	// gateway2books := spans["getone"].StartTime - spans["book_service_getone"].StartTime
+	connectToService := spans["books_connect"].Duration
 	inBooks := spans["getone"].Duration
 	inBooksDB := spans["DB"].Duration
-	books2gateway := spans["get_book"].Duration - spans["book_service_getone"].Duration - (spans["book_service_getone"].StartTime - spans["get_book"].StartTime)
+	// books2gateway := spans["get_book"].Duration - spans["book_service_getone"].Duration - (spans["book_service_getone"].StartTime - spans["get_book"].StartTime)
+	waitTime := spans["getone"].StartTime - (spans["books_connect"].Duration + spans["books_connect"].StartTime)
 	info := make(map[string]interface{})
 	info["total"] = total
 	info["authenticate"] = authenticate
-	info["gateway2books"] = gateway2books
+	info["connectToService"] = connectToService
 	info["inBooks"] = inBooks
 	info["inBooksDB"] = inBooksDB
-	info["books2gateway"] = books2gateway
+	info["waitTime"] = waitTime
+	info["getService"] = getService
 	return info, nil
 }
 
 func (b *SimpleBookstoreTraceParser) ParseEditBookTrace(spans map[string]Span) (map[string]interface{}, error) {
 	total := spans["update_book"].Duration
 	authenticate := spans["authenticate"].Duration
-	gateway2books := spans["update"].StartTime - spans["book_service_edit"].StartTime
+	getService := spans["books_edit_book"].Duration
+	// gateway2books := spans["update"].StartTime - spans["book_service_edit"].StartTime
+	connectToService := spans["books_connect"].Duration
 	inBooks := spans["update"].Duration
 	inBooksDB := spans["DB"].Duration
-	books2gateway := spans["update_book"].Duration - spans["book_service_edit"].Duration - (spans["book_service_edit"].StartTime - spans["update_book"].StartTime)
+	// books2gateway := spans["update_book"].Duration - spans["book_service_edit"].Duration - (spans["book_service_edit"].StartTime - spans["update_book"].StartTime)
+	waitTime := spans["update"].StartTime - (spans["books_connect"].Duration + spans["books_connect"].StartTime)
 	info := make(map[string]interface{})
 	info["total"] = total
 	info["authenticate"] = authenticate
-	info["gateway2books"] = gateway2books
+	info["getService"] = getService
 	info["inBooks"] = inBooks
 	info["inBooksDB"] = inBooksDB
-	info["books2gateway"] = books2gateway
+	info["connectToService"] = connectToService
+	info["waitTime"] = waitTime
 	return info, nil
 }
