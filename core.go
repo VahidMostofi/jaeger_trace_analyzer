@@ -1,7 +1,13 @@
 package main
 
+// TracesInfo ...
+type TracesInfo struct {
+	Info  map[string][]map[string]interface{} `json:"info"`
+	Stats map[string]map[string]*Stats        `json:"stats"`
+}
+
 // GatherTraceInfo ...
-func GatherTraceInfo(f *FetcherInput, traceAggregator TraceAggregator) (map[string][]map[string]interface{}, error) {
+func GatherTraceInfo(f *FetcherInput, traceAggregator TraceAggregator) (*TracesInfo, error) {
 	traceFetcher := &SimpleTraceFetcher{}
 	traces, err := traceFetcher.FetchTraces(f)
 	if err != nil {
@@ -21,5 +27,11 @@ func GatherTraceInfo(f *FetcherInput, traceAggregator TraceAggregator) (map[stri
 		detailsMap[trace.TraceType] = append(detailsMap[trace.TraceType], details)
 	}
 
-	return detailsMap, nil
+	t := &TracesInfo{}
+	t.Info = detailsMap
+	t.Stats = make(map[string]map[string]*Stats)
+	for key, traceInfo := range t.Info {
+		t.Stats[key] = ComputeStats(traceInfo)
+	}
+	return t, nil
 }
