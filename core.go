@@ -23,8 +23,9 @@ func GatherTraceInfo(f *FetcherInput, traceAggregator TraceAggregator) (*TracesI
 		details, err := traceAggregator.ParseTrace(trace)
 		if err != nil {
 
+		} else {
+			detailsMap[trace.TraceType] = append(detailsMap[trace.TraceType], details)
 		}
-		detailsMap[trace.TraceType] = append(detailsMap[trace.TraceType], details)
 	}
 
 	t := &TracesInfo{}

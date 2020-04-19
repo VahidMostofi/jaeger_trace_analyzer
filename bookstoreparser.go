@@ -1,6 +1,9 @@
 package main
 
-import "log"
+import (
+	"fmt"
+	"log"
+)
 
 // FixedBookstoreTraceParser parses one trace of bookstore, this will be deprecated soon
 type FixedBookstoreTraceParser struct{}
@@ -10,6 +13,9 @@ func (b *FixedBookstoreTraceParser) ParseTrace(trace *Trace) (map[string]interfa
 
 	var parseInfo map[string]interface{}
 	var err error
+	if len(trace.SpansMap) < 3 {
+		return nil, fmt.Errorf("Wrong request!")
+	}
 	switch trace.TraceType {
 	case "auth_login":
 		parseInfo, err = b.parseLoginTrace(trace.SpansMap)
