@@ -15,6 +15,7 @@ type Trace struct {
 	Spans     []*Span          `json:"spans"`
 	SpansMap  map[string]*Span //map from operationName to Span object
 	TraceType string           `json:"-"`
+	HasRoot   bool             `json:"-"`
 }
 
 // Span struct contains information about each span
@@ -114,6 +115,7 @@ func (t *SimpleTraceFetcher) FetchTraces(input *FetcherInput) ([]*Trace, error) 
 			if span.SpanID == span.TraceID {
 				span.IsRoot = true
 				trace.TraceType = span.OperationName
+				trace.HasRoot = true
 			}
 		}
 	}
