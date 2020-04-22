@@ -1,2 +1,4 @@
 sudo docker build . -t trace_analyser:latest
-sudo docker run --rm -p 8657:8657 --network host --name trace_analyser -d trace_analyser:latest
+sudo docker run --rm --network host --name trace_analyser -d trace_analyser:latest
+sudo docker run --rm -p 8657:8657 --name trace_analyser -d trace_analyser:latest
+
