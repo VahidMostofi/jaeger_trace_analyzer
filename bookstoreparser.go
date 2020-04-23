@@ -18,13 +18,19 @@ func (b *FixedBookstoreTraceParser) ParseTrace(trace *Trace) (map[string]interfa
 	}
 	switch trace.TraceType {
 	case "auth_login":
-		parseInfo, err = b.parseLoginTrace(trace.SpansMap)
+		if len(trace.SpansMap) == 6 {
+			parseInfo, err = b.parseLoginTrace(trace.SpansMap)
+		}
 		break
 	case "get_book":
-		parseInfo, err = b.parseGetBookTrace(trace.SpansMap)
+		if len(trace.SpansMap) == 6 {
+			parseInfo, err = b.parseGetBookTrace(trace.SpansMap)
+		}
 		break
 	case "update_book":
-		parseInfo, err = b.parseEditBookTrace(trace.SpansMap)
+		if len(trace.SpansMap) == 6 {
+			parseInfo, err = b.parseEditBookTrace(trace.SpansMap)
+		}
 		break
 	}
 	if err != nil {
