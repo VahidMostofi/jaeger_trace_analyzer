@@ -53,6 +53,7 @@ func (b *FixedBookstoreTraceParser) parseLoginTrace(spans map[string]*Span) (map
 	waitTime := spans["login"].StartTime - (spans["auth_connect"].StartTime + spans["auth_connect"].Duration)
 	// auth2gateway := spans["auth_login"].Duration - spans["auth_service_login"].Duration - (spans["auth_service_login"].StartTime - spans["auth_login"].StartTime)
 	info := make(map[string]interface{})
+	info["start"] = spans["auth_login"].StartTime
 	info["total"] = total
 	info["getService"] = getService
 	info["inAuth"] = inAuth
@@ -75,6 +76,7 @@ func (b *FixedBookstoreTraceParser) parseGetBookTrace(spans map[string]*Span) (m
 	// books2gateway := spans["get_book"].Duration - spans["book_service_getone"].Duration - (spans["book_service_getone"].StartTime - spans["get_book"].StartTime)
 	waitTime := spans["getone"].StartTime - (spans["books_connect"].Duration + spans["books_connect"].StartTime)
 	info := make(map[string]interface{})
+	info["start"] = spans["get_book"].StartTime
 	info["total"] = total
 	info["authenticate"] = authenticate
 	info["connectToService"] = connectToService
@@ -97,6 +99,7 @@ func (b *FixedBookstoreTraceParser) parseEditBookTrace(spans map[string]*Span) (
 	// books2gateway := spans["update_book"].Duration - spans["book_service_edit"].Duration - (spans["book_service_edit"].StartTime - spans["update_book"].StartTime)
 	waitTime := spans["update"].StartTime - (spans["books_connect"].Duration + spans["books_connect"].StartTime)
 	info := make(map[string]interface{})
+	info["start"] = spans["update_book"].StartTime
 	info["total"] = total
 	info["authenticate"] = authenticate
 	info["getService"] = getService
