@@ -33,6 +33,7 @@ func (b *FixedBookstoreTraceParser) ParseTrace(trace *Trace) (map[string]interfa
 		}
 		break
 	}
+	parseInfo["traceID"] = trace.TraceID
 	if err != nil {
 		log.Println(err)
 		return nil, err

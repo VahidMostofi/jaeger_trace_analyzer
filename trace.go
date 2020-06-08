@@ -16,6 +16,7 @@ type Trace struct {
 	SpansMap  map[string]*Span //map from operationName to Span object
 	TraceType string           `json:"-"`
 	HasRoot   bool             `json:"-"`
+	TraceID   string           `json:"traceID"`
 }
 
 // Span struct contains information about each span

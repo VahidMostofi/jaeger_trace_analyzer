@@ -40,9 +40,9 @@ curl --location --request POST 'http://localhost:8657' \
 }'
 ```
 ## ToDo
-* Better Readme
-* Configure port number using environment variables and command line
-* Make it more general! Now it only works with Bookstore application
-* Configuration and possiblity on how to get the data, instead of having one static approach
-* Use RPC instead of http request
-* Better project
+- [ ] Better Readme
+- [ ] Configure port number using environment variables and command line
+- [ ] Make it more general! Now it only works with Bookstore application
+- [ ] Configuration and possiblity on how to get the data, instead of having one static approach
+- [ ] Use RPC instead of http request
+- [ ] Better project

@@ -15,7 +15,7 @@ func ComputeStats(traceInfo []map[string]interface{}) map[string]*Stats {
 	temp := make(map[string][]float64)
 
 	for key := range traceInfo[0] {
-		if key != "startTime" && key != "duration" {
+		if key != "startTime" && key != "duration" && key != "traceID" {
 			temp[key] = make([]float64, len(traceInfo))
 		}
 	}
